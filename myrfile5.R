@@ -1,0 +1,37 @@
+library(MASS)
+library(dplyr)
+
+search()
+str(cats)
+summary(cats)
+head(cats)
+cats_male <- cats %>% filter(Sex =="M")
+cats_female <- cats %>% filter(Sex =="F")
+attach(cats)
+plot(Bwt,Hwt, main="Heart Weight/ Body Weight of Cats",
+     xlab="Body Weight",ylab="Heart Weight", pch=16, col= c("red","blue")[Sex])
+cor(Bwt,Hwt)
+cor.test(Bwt, Hwt)
+cor.test(Bwt, Hwt, alternative="greater")
+plot(cats_female$Bwt,cats_female$Hwt, main="Heart Weight/ Body Weight of Cats",xlab="Body Weight",ylab="Heart Weight", pch=16)
+plot(cats_male$Bwt,cats_male$Hwt, main="Heart Weight/ Body Weight of Cats",xlab="Body Weight",ylab="Heart Weight", pch=16)
+cor(cats_male$Hwt,cats_male$Bwt)
+cor(cats_female$Hwt,cats_female$Bwt)
+cor.test(cats_male$Bwt,cats_male$Hwt)
+cor.test(cats_female$Bwt, cats_female$Hwt)
+plot(Bwt,Hwt, main="Heart Weight/Body Weight of Cats",xlab="Body Weight",
+     ylab="Heart Weight", pch=16, col= "blue")
+regr=lm(Hwt ~ Bwt)
+abline(regr,col= "green")
+summary(regr)
+detach(cats)
+rm(cats)
+attach(cars)
+head(cars)
+cars
+
+plot(speed,dist, main="spped/distance graph of cars Cats",xlab="speed",
+     ylab="distance", pch=16, col= "blue")
+regr=lm( dist~ speed)
+abline(regr,col= "green")
+summary(regr)
